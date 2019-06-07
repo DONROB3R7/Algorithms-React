@@ -23,20 +23,27 @@ class App extends React.Component {
         {
           name: "Fizz Buzz",
           type: "fizzBuzz"
+        },
+        {
+          name: "Harmless Ransom",
+          type: "harmlessRansom"
         }
       ]
     };
   }
 
   _handleChange = event => {
-    this.setState({ typeSelected: event.target.value });
+    this.setState({
+      typeSelected: event.target.value,
+      name: event.target.childNodes[event.target.selectedIndex].title
+    });
     this.algorithmsLogic(event.target.value);
   };
 
   getOptions() {
     const algorithmsType = this.state.algorithmsType;
     return algorithmsType.map((type, i) => (
-      <option key={i} value={type.type}>
+      <option key={i} value={type.type} title={type.name}>
         {type.name}
       </option>
     ));
@@ -50,12 +57,12 @@ class App extends React.Component {
     return (
       <div>
         <h1>Algorithms in React </h1>
-        <h4>
-          You selected{" "}
-          {this.state.typeSelected === "empty" ? "" : this.state.typeSelected}
-        </h4>
         <select onChange={this._handleChange}>{this.getOptions()}</select>
-        <Logic show={this.state.show} />
+        <Logic
+          show={this.state.show}
+          typeSelected={this.state.typeSelected}
+          name={this.state.name}
+        />
       </div>
     );
   }
