@@ -3,12 +3,6 @@ import ReactDOM from "react-dom";
 import Logic from "./Component/Logic";
 import "./styles.css";
 
-//FizzBuzz
-
-// if the number it's divizible by 3 => fizzz
-// if the number it's divizible by 5 => buzz
-// if the number it's divizible by 5 and 3 => fizzBuzz
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +21,22 @@ class App extends React.Component {
         {
           name: "Harmless Ransom",
           type: "harmlessRansom"
+        },
+        {
+          name: "Palindrome",
+          type: "palindrome"
+        },
+        {
+          name: "Caesar Cipher",
+          type: "caesarcipher"
+        },
+        {
+          name: "Reverse Words",
+          type: "reversewords"
+        },
+        {
+          name: "Reverse Array",
+          type: "reversearray"
         }
       ]
     };

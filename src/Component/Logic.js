@@ -48,12 +48,101 @@ const Logic = props => {
       return console.log(noteIsPossible);
     };
 
+    const isPalindrome = string => {
+      //A palindrome is a word, number, phrase, or other sequence of
+      //characters which reads the same backward as forward, such as
+      //madam or racecar
+
+      string = string.toLowerCase();
+      const charactersArr = string.split("");
+      const validCharacters = "abcdefghijklmnopqrstuvwxyz".split("");
+
+      var lettersArr = [];
+      charactersArr.forEach(char => {
+        if (validCharacters.indexOf(char) > -1) lettersArr.push(char);
+      });
+
+      var palindrome = true;
+      if (lettersArr.join("") === lettersArr.reverse().join(""));
+      else palindrome = false;
+
+      return console.log(palindrome);
+    };
+
+    const caesarCipher = (str, num) => {
+      //In cryptography, a Caesar cipher, also known as Caesar's cipher,
+      //the shift cipher, Caesar's code or Caesar shift, is one of the simplest
+      //and most widely known encryption techniques.
+      num = num % 26;
+      const lowerCaseString = str.toLowerCase();
+      const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+      let newString = "";
+
+      for (let i = 0; i < lowerCaseString.length; i++) {
+        // Split the str in letter to be able to shift the letter with a new letter
+        const currentLetter = lowerCaseString[i];
+        if (currentLetter === " ") {
+          newString += currentLetter;
+          continue;
+        }
+
+        const currentIndex = alphabet.indexOf(currentLetter);
+        let newIndex = currentIndex + num;
+        if (newIndex > 25) newIndex = newIndex - 26;
+        if (newIndex < 0) newIndex = 26 + newIndex;
+        if (str[i] === str[i].toUpperCase()) {
+          newString += alphabet[newIndex].toLocaleUpperCase();
+        } else {
+          newString += alphabet[newIndex];
+        }
+      }
+      console.log(`Intial message: ${str}`);
+      console.log(`New cipher message: ${newString}`);
+    };
+
+    const reverseWords = string => {
+      const wordsArr = string.split(" ");
+      const reversedWordsArr = [];
+
+      wordsArr.forEach(word => {
+        let reversedWord = "";
+
+        for (let i = word.length - 1; i >= 0; i--) {
+          reversedWord += word[i];
+        }
+        reversedWordsArr.push(reversedWord);
+      });
+
+      return console.log(reversedWordsArr.join(" "));
+    };
+
+    const reverseArrayInPlace = arr => {
+      for (let i = 0; i < arr.length / 2; i++) {
+        let tempVar = arr[i];
+        arr[i] = arr[arr.length - 1 - i];
+        arr[arr.length - 1 - i] = tempVar;
+      }
+      return console.log(arr);
+    };
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
         break;
       case "harmlessRansom":
         harmlessRansom("rex cel nemilos", "rex cel rau nemilos");
+        break;
+      case "palindrome":
+        isPalindrome("racecar");
+        break;
+      case "caesarcipher":
+        caesarCipher("CelNemilos", 5);
+        break;
+      case "reversewords":
+        reverseWords("This is a reverse word");
+        break;
+      case "reversearray":
+        reverseArrayInPlace([1, 2, 3, 4, 5]);
         break;
       default:
         console.log("Error");
