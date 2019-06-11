@@ -45,6 +45,10 @@ class App extends React.Component {
         {
           name: "Fibonacci",
           type: "fibonacci"
+        },
+        {
+          name: "Memoized Fibonacci",
+          type: "fibmemo"
         }
       ]
     };

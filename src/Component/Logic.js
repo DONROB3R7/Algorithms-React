@@ -141,9 +141,24 @@ const Logic = props => {
       console.log(pairs);
     };
 
+    // don't run more than 30 it's in O(n^2).
+    //will crash the browser
     const fibonacci = position => {
       if (position < 3) return 1;
       else return fibonacci(position - 1) + fibonacci(position - 2);
+    };
+
+    // Runtime: 0(n) - linear
+    const fibMemo = (index, cache) => {
+      cache = cache || [];
+      if (cache[index]) return cache[index];
+      else {
+        if (index < 3) return 1;
+        else {
+          cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+        }
+      }
+      return cache[index];
     };
 
     switch (type) {
@@ -170,6 +185,9 @@ const Logic = props => {
         break;
       case "fibonacci":
         console.log(fibonacci(12));
+        break;
+      case "fibmemo":
+        console.log(fibMemo(5));
         break;
       default:
         console.log("Error");
