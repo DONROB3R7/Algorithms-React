@@ -126,6 +126,8 @@ const Logic = props => {
     };
 
     const twoSum = (numArray, sum) => {
+      // Returns ever pair of numbers from 'numArray'
+      //that adds up to the 'sum'
       var pairs = [];
       var hashtable = [];
       for (var i = 0; i < numArray.length; i++) {
@@ -137,6 +139,11 @@ const Logic = props => {
         hashtable.push(currNum);
       }
       console.log(pairs);
+    };
+
+    const fibonacci = position => {
+      if (position < 3) return 1;
+      else return fibonacci(position - 1) + fibonacci(position - 2);
     };
 
     switch (type) {
@@ -160,6 +167,9 @@ const Logic = props => {
         break;
       case "twosum":
         twoSum([1, 6, 4, 5, 3, 3, 2, 0, 7], 7);
+        break;
+      case "fibonacci":
+        console.log(fibonacci(12));
         break;
       default:
         console.log("Error");

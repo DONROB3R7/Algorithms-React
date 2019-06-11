@@ -41,6 +41,10 @@ class App extends React.Component {
         {
           name: "Two Sum",
           type: "twosum"
+        },
+        {
+          name: "Fibonacci",
+          type: "fibonacci"
         }
       ]
     };
