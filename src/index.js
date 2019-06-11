@@ -37,6 +37,10 @@ class App extends React.Component {
         {
           name: "Reverse Array",
           type: "reversearray"
+        },
+        {
+          name: "Two Sum",
+          type: "twosum"
         }
       ]
     };

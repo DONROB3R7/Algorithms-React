@@ -125,6 +125,20 @@ const Logic = props => {
       return console.log(arr);
     };
 
+    const twoSum = (numArray, sum) => {
+      var pairs = [];
+      var hashtable = [];
+      for (var i = 0; i < numArray.length; i++) {
+        var currNum = numArray[i];
+        var counterpart = sum - currNum;
+        if (hashtable.indexOf(counterpart) !== -1) {
+          pairs.push([currNum, counterpart]);
+        }
+        hashtable.push(currNum);
+      }
+      console.log(pairs);
+    };
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
@@ -143,6 +157,9 @@ const Logic = props => {
         break;
       case "reversearray":
         reverseArrayInPlace([1, 2, 3, 4, 5]);
+        break;
+      case "twosum":
+        twoSum([1, 6, 4, 5, 3, 3, 2, 0, 7], 7);
         break;
       default:
         console.log("Error");
