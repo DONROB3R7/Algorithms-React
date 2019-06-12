@@ -218,7 +218,19 @@ const Logic = props => {
       };
     };
 
-    const binarySearch = array => {};
+    const binarySearch = (numArray, key) => {
+      var middleIdx = Math.floor(numArray.length / 2);
+      var middleElem = numArray[middleIdx];
+
+      if (middleElem === key) return true;
+      else if (middleElem < key && numArray.length > 1) {
+        return binarySearch(numArray.splice(middleElem, numArray.length));
+      } else if (middleElem > key && numArray.length > 1) {
+        return binarySearch(numArray.splice(0, middleIdx), key);
+      } else {
+        return false;
+      }
+    };
 
     switch (type) {
       case "fizzBuzz":
@@ -252,7 +264,9 @@ const Logic = props => {
         console.log(meanMediaMode([9, 10, 23, 9]));
         break;
       case "binarySearch":
-        console.log(binarySearch([2, 4, 8, 7, 9, 1, 10], 5));
+        console.log(
+          binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 22, 33, 44, 55], 2)
+        );
         break;
       default:
         console.log("Error");
