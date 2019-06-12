@@ -49,6 +49,14 @@ class App extends React.Component {
         {
           name: "Memoized Fibonacci",
           type: "fibmemo"
+        },
+        {
+          name: "Mean Median Mode",
+          type: "meanMediaMode"
+        },
+        {
+          name: "Binary Search",
+          type: "binarySearch"
         }
       ]
     };

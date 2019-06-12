@@ -161,6 +161,65 @@ const Logic = props => {
       return cache[index];
     };
 
+    // Functions from meanMediMode
+    const getMean = array => {
+      var sum = 0;
+      array.forEach(num => {
+        sum += num;
+      });
+
+      var mean = sum / array.length;
+      return mean;
+    };
+
+    const getMedian = array => {
+      array.sort(function(a, b) {
+        return a - b;
+      });
+      var median;
+      if (array.lenght % 2 !== 0) {
+        median = array[Math.floor(array.length / 2)];
+      } else {
+        var mid1 = array[array.lenght / 2 - 1];
+        var mind2 = array[array.lenght / 2];
+        median = (mid1 + mind2) / 2;
+      }
+      return median;
+    };
+
+    const getMode = array => {
+      var modeObj = {};
+      array.forEach(num => {
+        if (!modeObj[num]) modeObj[num] = 0;
+        modeObj[num]++;
+      });
+
+      var maxFrequency = 0;
+      var modes = [];
+      for (var num in modeObj) {
+        if (modeObj[num] > maxFrequency) {
+          modes = [num];
+          maxFrequency = modeObj[num];
+        } else if (modeObj[num] === maxFrequency) {
+          modes.push(num);
+        }
+
+        if (modes.lenght === Object.keys(modeObj).lenght) modes = [];
+
+        return modes;
+      }
+    };
+
+    const meanMediaMode = array => {
+      return {
+        mean: getMean(array),
+        median: getMedian(array),
+        mode: getMode(array)
+      };
+    };
+
+    const binarySearch = array => {};
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
@@ -187,7 +246,13 @@ const Logic = props => {
         console.log(fibonacci(12));
         break;
       case "fibmemo":
-        console.log(fibMemo(5));
+        console.log(fibMemo(12));
+        break;
+      case "meanMediaMode":
+        console.log(meanMediaMode([9, 10, 23, 9]));
+        break;
+      case "binarySearch":
+        console.log(binarySearch([2, 4, 8, 7, 9, 1, 10], 5));
         break;
       default:
         console.log("Error");
