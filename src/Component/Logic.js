@@ -232,6 +232,31 @@ const Logic = props => {
       }
     };
 
+    const sieveOfEratosthenes = n => {
+      // return all prime numbers up
+      // to 'num' in an array
+      var primes = [];
+      for (var i = 0; i <= n; i++) {
+        primes[i] = true;
+      }
+
+      primes[0] = false;
+      primes[1] = false;
+
+      for (var x = 2; x <= Math.sqrt(n); x++) {
+        for (var j = 2; j * x <= n; j++) {
+          primes[x * j] = false;
+        }
+      }
+
+      var result = [];
+      for (var g = 0; g < primes.length; g++) {
+        if (primes[g]) result.push(g);
+      }
+
+      return result;
+    };
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
@@ -267,6 +292,9 @@ const Logic = props => {
         console.log(
           binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 22, 33, 44, 55], 2)
         );
+        break;
+      case "sof":
+        console.log(sieveOfEratosthenes(200));
         break;
       default:
         console.log("Error");

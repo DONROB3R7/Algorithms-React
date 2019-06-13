@@ -57,6 +57,10 @@ class App extends React.Component {
         {
           name: "Binary Search",
           type: "binarySearch"
+        },
+        {
+          name: "Sieve of Eratosthenes",
+          type: "sof"
         }
       ]
     };
