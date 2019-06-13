@@ -61,6 +61,10 @@ class App extends React.Component {
         {
           name: "Sieve of Eratosthenes",
           type: "sof"
+        },
+        {
+          name: "Bubble Sort",
+          type: "bubblesort"
         }
       ]
     };

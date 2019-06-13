@@ -257,6 +257,20 @@ const Logic = props => {
       return result;
     };
 
+    const bubbleSort = array => {
+      // return array, sorted with bubble sort
+      for (var i = array.length; i > 0; i--) {
+        for (var j = 0; j < i; j++) {
+          if (array[j] > array[j + 1]) {
+            var temp = array[j];
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+        }
+      }
+      return array;
+    };
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
@@ -295,6 +309,9 @@ const Logic = props => {
         break;
       case "sof":
         console.log(sieveOfEratosthenes(200));
+        break;
+      case "bubblesort":
+        console.log(bubbleSort([7, 1]));
         break;
       default:
         console.log("Error");
