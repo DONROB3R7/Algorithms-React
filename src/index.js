@@ -65,6 +65,10 @@ class App extends React.Component {
         {
           name: "Bubble Sort",
           type: "bubblesort"
+        },
+        {
+          name: "Merge Sort",
+          type: "mergesort"
         }
       ]
     };
