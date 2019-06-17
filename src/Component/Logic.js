@@ -271,6 +271,31 @@ const Logic = props => {
       return array;
     };
 
+    const mergesort = arr => {
+      if (arr.length < 2) return arr;
+      var middleIndex = Math.floor(arr.length / 2);
+      var firstHalf = arr.slice(0, middleIndex);
+      var secondHalf = arr.slice(middleIndex);
+
+      return merge(mergesort(firstHalf), mergesort(secondHalf));
+    };
+
+    const merge = (array1, array2) => {
+      var result = [];
+      while (array1.length && array2.length) {
+        var minElem;
+        if (array1[0] < array2[0]) {
+          minElem = array1.shift();
+        } else {
+          minElem = array2.shift();
+          result.push(minElem);
+        }
+      }
+      if (array1.length) result = result.concat(array1);
+      else result = result.concat(array2);
+      return result;
+    };
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
@@ -308,10 +333,15 @@ const Logic = props => {
         );
         break;
       case "sof":
-        console.log(sieveOfEratosthenes(200));
+        console.log(sieveOfEratosthenes(13));
         break;
       case "bubblesort":
-        console.log(bubbleSort([7, 1]));
+        console.log(bubbleSort([7, 1, 5, 4, 9, 10]));
+        break;
+      case "mergesort":
+        console.log(
+          mergesort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 9, 1])
+        );
         break;
       default:
         console.log("Error");
