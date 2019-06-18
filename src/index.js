@@ -69,6 +69,10 @@ class App extends React.Component {
         {
           name: "Merge Sort",
           type: "mergesort"
+        },
+        {
+          name: "Max Stock Profit",
+          type: "maxStockProfit"
         }
       ]
     };

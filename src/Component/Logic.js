@@ -296,6 +296,30 @@ const Logic = props => {
       return result;
     };
 
+    const maxStockProfit = pricesArr => {
+      // takes in array of prices as parameter
+      // returns the max possible profit of the day
+      let maxProfit = -1;
+      let buyPrice = 0;
+      let sellPrice = 0;
+
+      var changeBuyPrice = true;
+
+      for (var i = 0; i < pricesArr.length; i++) {
+        if (changeBuyPrice) buyPrice = pricesArr[i];
+        sellPrice = pricesArr[i + 1];
+
+        if (sellPrice < buyPrice) {
+          changeBuyPrice = true;
+        } else {
+          const tempProfit = sellPrice - buyPrice;
+          if (tempProfit > maxProfit) maxProfit = tempProfit;
+          changeBuyPrice = false;
+        }
+      }
+      return maxProfit;
+    };
+
     switch (type) {
       case "fizzBuzz":
         fizzBuzz();
@@ -342,6 +366,9 @@ const Logic = props => {
         console.log(
           mergesort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 9, 1])
         );
+        break;
+      case "maxStockProfit":
+        console.log(maxStockProfit([1, 2, 897, 9]));
         break;
       default:
         console.log("Error");
