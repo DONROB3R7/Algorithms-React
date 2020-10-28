@@ -78,7 +78,7 @@ class App extends React.Component {
     };
   }
 
-  _handleChange = event => {
+  _handleChange = (event) => {
     this.setState({
       typeSelected: event.target.value,
       name: event.target.childNodes[event.target.selectedIndex].title
@@ -102,7 +102,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Algorithms in React </h1>
+        <h1>Coding Challenges React</h1>
         <select onChange={this._handleChange}>{this.getOptions()}</select>
         <Logic
           show={this.state.show}
